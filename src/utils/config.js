@@ -1,5 +1,6 @@
-const local = "http://localhost:5173"
+const local = "http://localhost:5000"
 const production = "https://rs-ecommerce-server.onrender.com/api"
+
 
 let base_url = ''
 let mode = 'pro'
