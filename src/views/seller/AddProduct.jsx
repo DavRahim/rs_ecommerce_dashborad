@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BsImages, } from "react-icons/bs";
-import { IoMdClose } from "react-icons/io5";
+import { FaClosedCaptioning } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { get_category } from "../../store/reducers/categoryReducer";
@@ -316,7 +316,7 @@ const AddProduct = () => {
                           onClick={() => removeImage(ind)}
                           className="p-2 z-10 cursor-pointer bg-slate-700 hover:shadow-lg hover:shadow-sla/50 text-white absolute top-1 right-1 rounded-full"
                         >
-                          <IoMdClose />
+                          <FaClosedCaptioning />
                         </span>
                       </div>
                     )
