@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import api from "../../api/api";
 import axios from "axios";
 
 export const get_seller_payemt_details = createAsyncThunk(
