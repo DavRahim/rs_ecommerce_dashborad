@@ -1,16 +1,22 @@
+/* eslint-disable no-unused-vars */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import api from "../../api/api";
+import axios from "axios";
+import { base_url } from "../../utils/config";
 
 export const add_banner = createAsyncThunk(
   "banner/add_banner",
-  async (info, { rejectWithValue, fulfillWithValue }) => {
+  async (info, { rejectWithValue, fulfillWithValue, getState }) => {
     try {
       //   const formData = new FormData();
       //   formData.append("name", name);
       //   formData.append("image", image);
-      const { data } = await api.post("/banner/add", info, {
-        withCredentials: true,
-      });
+      const { token } = getState().auth
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+      const { data } = await axios.post(`${base_url}/banner/add`, info, config);
 
       // console.log(data);
       return fulfillWithValue(data);
@@ -21,14 +27,18 @@ export const add_banner = createAsyncThunk(
 );
 export const update_banner = createAsyncThunk(
   "banner/update_banner",
-  async ({bannerId, info}, { rejectWithValue, fulfillWithValue }) => {
+  async ({ bannerId, info }, { rejectWithValue, fulfillWithValue, getState }) => {
     try {
       //   const formData = new FormData();
       //   formData.append("name", name);
       //   formData.append("image", image);
-      const { data } = await api.put(`/banner/update/${bannerId}`, info, {
-        withCredentials: true,
-      });
+      const { token } = getState().auth
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      };
+      const { data } = await axios.put(`${base_url}/banner/update/${bannerId}`, info, config);
 
       // console.log(data);
       return fulfillWithValue(data);
@@ -39,14 +49,18 @@ export const update_banner = createAsyncThunk(
 );
 export const get_banner = createAsyncThunk(
   "banner/get_banner",
-  async (productId, { rejectWithValue, fulfillWithValue }) => {
+  async (productId, { rejectWithValue, fulfillWithValue, getState }) => {
     try {
       //   const formData = new FormData();
       //   formData.append("name", name);
       //   formData.append("image", image);
-      const { data } = await api.get(`/banner/get/${productId}`, {
-        withCredentials: true,
-      });
+      const { token } = getState().auth
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+      const { data } = await axios.get(`${base_url}/banner/get/${productId}`, config);
       // console.log(data);
       return fulfillWithValue(data);
     } catch (error) {
