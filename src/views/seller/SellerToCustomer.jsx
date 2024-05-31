@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { IoMdClose } from "react-icons/io5";
+import { FaClosedCaptioning } from "react-icons/fa";
 import { FaList } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -104,7 +104,7 @@ const SellerToCustomer = () => {
                   onClick={() => setShow(!show)}
                   className="block cursor-pointer md:hidden"
                 >
-                  <IoMdClose />
+                  <FaClosedCaptioning />
                 </span>
               </div>
               {customers.map((c, i) => (
