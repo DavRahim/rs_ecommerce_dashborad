@@ -6,16 +6,17 @@ import { base_url } from "../../utils/config";
 export const add_banner = createAsyncThunk(
   "banner/add_banner",
   async (info, { rejectWithValue, fulfillWithValue, getState }) => {
+    const { token } = getState().auth
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }
     try {
       //   const formData = new FormData();
       //   formData.append("name", name);
       //   formData.append("image", image);
-      const { token } = getState().auth
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }
+
       const { data } = await axios.post(`${base_url}/banner/add`, info, config);
 
       // console.log(data);
@@ -28,16 +29,16 @@ export const add_banner = createAsyncThunk(
 export const update_banner = createAsyncThunk(
   "banner/update_banner",
   async ({ bannerId, info }, { rejectWithValue, fulfillWithValue, getState }) => {
+    const { token } = getState().auth
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    };
     try {
       //   const formData = new FormData();
       //   formData.append("name", name);
       //   formData.append("image", image);
-      const { token } = getState().auth
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      };
       const { data } = await axios.put(`${base_url}/banner/update/${bannerId}`, info, config);
 
       // console.log(data);
@@ -50,16 +51,17 @@ export const update_banner = createAsyncThunk(
 export const get_banner = createAsyncThunk(
   "banner/get_banner",
   async (productId, { rejectWithValue, fulfillWithValue, getState }) => {
+    const { token } = getState().auth
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }
     try {
       //   const formData = new FormData();
       //   formData.append("name", name);
       //   formData.append("image", image);
-      const { token } = getState().auth
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }
+
       const { data } = await axios.get(`${base_url}/banner/get/${productId}`, config);
       // console.log(data);
       return fulfillWithValue(data);
